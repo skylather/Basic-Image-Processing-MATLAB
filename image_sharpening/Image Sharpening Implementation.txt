@@ -1,0 +1,15 @@
+***** Sharpening images - imsharpen() *****
+
+The most widely used technique for image sharpening is Unsharp Masking. The unsharp masking technique comes from a publishing industry process in which an image is sharpened by subtracting a blurred (unsharp) version of the image from itself.
+
+Let us being by reading an input image:
+A = imread('filename.extension');
+
+MATLAB has a function 'imsharpen()' for enhancing images using unsharp masking. It can be used as:
+B = imsharpen(A, Name, Value,...);
+sharpens the image using name-value pairs to control aspects of unsharp masking.
+
+Amount of image sharpening can be varies as:
+B_sharp1 = imsharpen(A, 'Amount', 0.8);
+B_sharp2 = imsharpen(A, 'Amount', 1.0);
+B_sharp3 = imsharpen(A, 'Amount', 1.2);
