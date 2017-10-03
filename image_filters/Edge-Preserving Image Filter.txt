@@ -1,0 +1,18 @@
+***** Edge-preserving image filtering - imguidedfilter() *****
+
+Image filtering techniques discussed in previous lectures have the negative effect of blurring edges resulting in lower quality filtered images. The guided image filter performs edge-preserving smoothing on an image, using the content of a second image, called a guidance image, to influence the filtering. The guidance image can be the image itself, a different version of the image, or a completely different image.
+
+Guided image filtering is a neighborhood operation, like other filtering operations, but takes into account the statistics of a region in the corresponding spatial neighborhood in the guidance image when calculating the value of the output pixel.
+
+MATLAB has a function "imguidedfilter()" which can filter binary, grayscale or RGB images. 
+
+Let us read an image for filtering as:
+A = imread('filename.extension');
+
+Now we can get the smoothed image using guided filtering as:
+A_guided_filtered = imguidedfilter(A);
+
+Show image pair side by side as:
+imshowpair(A, A_guided_filtered, 'montage');
+
+Here image shown in left half is the original image and on right half lies the filtered image using guided image filter.

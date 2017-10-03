@@ -1,0 +1,29 @@
+***** Image Smoothing - Homogeneous blur, Gaussian blur, Median blur, Median Blur *****
+
+Let us begin with image smoothing filters. Image smoothing filters are the same as image blurring filter, which aim to smooth a region by replacing pixel values by some linear or non-linear function of neighbourhood values.
+
+Pixel neighbourhood can be rectangular (generally) or disk shaped. Image filtering can be linear (in case of homogeneous blur, Gaussian blur, etc.) as well as non-linear (median blur, etc.) with respect to neighbourhood pixel values.
+
+In this lecture, we will talk about average filtering and Gaussian filtering.
+
+To being with in MATLAB, we have a function by the name "fspecial()" to which you pass arguments for getting desired filter.
+
+In order to generate average filter:
+h = fspecial('average', hsize);
+returns an averaging filter h of size hsize. The argument hsize can be a vector specifying the number of rows and columns in h, or it can be a scalar, in which case h is a square matrix. The default value for hsize is [3 3].
+
+And to obtain Gaussian filter:
+h = fspecial('gaussian', hsize, sigma); 
+returns a rotationally symmetric Gaussian low-pass filter of size hsize with standard deviation sigma (positive). hsize can be a vector specifying the number of rows and columns in h, or it can be a scalar, in which case h is a square matrix. The default value for hsize is [3 3]; the default value for sigma is 0.5.
+
+Now in order to filter a 2D image, MATLAB has a function by the name "imfilter()" which is implemented as:
+B = imfilter(A,h);
+filters the image array A with the 2D filter h. The result B has the same size and type as A.
+
+To apply median filter to an image, 
+B = medfilt2(A); 
+performs median filtering of the matrix A using the default 3-by-3 neighbourhood.
+
+As we increase the neighbourhood size of filter, the extent of image blurring increases. The averaging filter act as low-pass filter normalizing image pixel intensity variations. As a result, the edges (which consist of sharp intensity variations across them) in an image also get blurred which is not desired. 
+
+However edges in an image can be prevented from blurring by using edge-preserving filters, which will be discussed in next lecture.
