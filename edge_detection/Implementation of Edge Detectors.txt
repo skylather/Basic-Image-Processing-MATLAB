@@ -1,0 +1,21 @@
+***** Edge Detector - Sobel, Prewitt, Canny *****
+
+Let us begin with edge detection in an image in MATLAB. We will start by first reading an input image as:
+A = imread('filename.extension');
+
+The edge detection function takes as input intensity image (which is single-channel), so converting our read image to grayscale:
+A_gray = rgb2gray(A);
+
+MATLAB has a function by the name 'edge()' for detection of edges. There are various methods of edge detection as described below:
+
+1. Sobel edge detection
+BW_sobel = edge(A, 'sobel', thresh, direction); 
+specifies the direction of detection for the Sobel method. direction is a string specifying whether to look for 'horizontal' or 'vertical' edges or 'both' (the default).
+
+2. Prewitt edge detection
+BW_prewitt = edge(I, 'prewitt', thresh, direction) 
+specifies the direction of detection for the Prewitt method. direction is a string specifying whether to look for 'horizontal' or 'vertical' edges or 'both' (default).
+
+3. Canny edge detection
+BW_canny = edge(I, 'canny');
+specifies the Canny method.
