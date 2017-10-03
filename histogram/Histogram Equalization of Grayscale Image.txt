@@ -1,0 +1,15 @@
+***** Histogram equalization of single channel images - histeq() *****
+
+Image with low contrast can be enhanced to make image features more visible and vibrant using the technique of image histogram equalization. Histogram equalization tries to uniformly distribute the image pixel intensities across the range of value as per image bit depth thereby resulting in greater image contrast.
+
+First let us read an image. The image must be single channel image. Histogram equalization of RGB image will be dealt with in next lecture.
+A = imread('filename.extension');
+
+Now let us equalize the histogram of read image.
+A_histeq = histeq(A);
+
+Let us display the  original image and contrast enhanced (histogram equalized) image with their histogram plots as:
+figure, subplot(2, 2, 1), imshow(A), title('Original Image');
+subplot(2, 2, 2), imshow(A_histeq), title('Equalized Image');
+subplot(2, 2, 3), imhist(A), title('Histogram of Original Image');
+subplot(2, 2, 4), imhist(A_histeq), title('Histogram of Equalized Image');

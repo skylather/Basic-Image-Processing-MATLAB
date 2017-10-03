@@ -1,0 +1,22 @@
+***** Plotting histogram of an image - imhist() *****
+
+Histogram of a single channel image can be plotted using the matlab function "imshist()". 
+
+First let us read a single channel image.
+A = imread('filename.extension');
+
+Histogram plotting function works on a single channel of image, therefore, if read image A is single channel then its histogram can be diplayed as:
+figure, imhist(A), title('Histogram of read image');
+
+Else if it is 3 channel image, the histogram of individual image channels can be displayed as:
+figure, imhist(A(:, :, 1)), tile('Histogram of 1st channel of read image');
+figure, imhist(A(:, :, 2)), tile('Histogram of 2nd channel of read image');
+figure, imhist(A(:, :, 3)), tile('Histogram of 3rd channel of read image');
+
+By default the imhist() function calculates the histogram for the intensity image I and displays a plot of the histogram. The number of bins in the histogram is determined by the image type.
+If I is a grayscale or single channel image, imhist uses a default value of 256 bins.
+If I is a binary image, imhist uses two bins.
+
+If you want to select number of bins by yourself, you can display the image histogram as:
+figure, imhist(A, n), title('Histogram of read image with n bins');
+where n is the number of bins you would like to use for displaying your image histogram. However, for binary images value of n is fixed, i.e., 2.
