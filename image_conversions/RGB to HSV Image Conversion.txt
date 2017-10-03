@@ -1,0 +1,24 @@
+***** Converting RGB image to HSV image - rgb2hsv() *****
+
+RGB color space consists of 3 channels each of R, G & B color whereas HSV color space consists of 3 channels respectively Hue (H), Saturation (S) and Value (V) channels. RGB image is used for viewing whereas HSV image color space is preferred for image processing.
+
+First let us read an RGB image.
+A = imread('filename.extension');
+
+Individual R, G & B channels can be extracted as:
+R = A(:, :, 1);
+G = A(:, :, 2);
+B = A(:, :, 3);
+
+Now let us convert this RGB image to HSV color space as:
+A_hsv = rgb2hsv(A);
+
+Now individual H, S & V channels can be extracted as same as the RGB image channels as:
+H = A_hsv(:, :, 1);
+S = A_hsv(:, :, 2);
+V = A_hsv(:, :, 3);
+
+Displaying the RGB and HSV images and individual channels.
+
+
+The V channel looks alike the grayscale conversion image of RGB image. V channels displays the intensity image corresponding to the RGB image.

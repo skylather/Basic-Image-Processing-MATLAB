@@ -1,0 +1,14 @@
+***** Converting RGB image to Grayscale - rgb2gray() *****
+
+First let us read an rgb image.
+A = imread('filename.extension');
+
+RGB image contains 3 channels which can be verified as:
+number_of_channels = size(A, 3);
+
+Now let say if we want to convert this RGB image to Grayscale, we will rename the grayscale image as "A_gray".
+A_gray = rgb2gray(A);
+
+Now display the original and converted image side-by-side for comparison.
+figure, subplot(1, 2, 1), imshow(A), title('Input RGB image');
+subplot(1, 2, 2), imshow(A_gray), title('Converted Grayscale image');
