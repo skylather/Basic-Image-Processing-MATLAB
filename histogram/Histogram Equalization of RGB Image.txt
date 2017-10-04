@@ -1,0 +1,26 @@
+***** Histogram equalization of RGB images *****
+
+Histogram equalization is a non-linear process. Channel splitting and equalizing each channel separately is not the proper way for equalization of contrast. Equalization involves Intensity values of the image not the color components.
+
+So for a simple RGB color image, HE should not be applied individually on each channel. Rather, it should be applied such that intensity values are equalized without disturbing the color balance of the image. So, the first step is to convert the color space of the image from RGB into one of the color space which separates intensity values from color components. Some of these are HSV, YUV and YCbCr.
+
+We will perform histogram equalization of RGB image by using following steps:
+1. Convert RGB image to HSV image.
+2. Equalize the V-channel (intensity channel) of HSV image.
+3. Convert the HSV image (with equalized V-channel) into RGB image.
+
+Let us begin in MATLAB, first we will read a RGB image as:
+A = imread('filename.extension');
+
+Convert the RGB image into HSV image as:
+A_hsv = rgb2hsv(A);
+
+V-channel is the 3rd channel in HSV image. So equalize the V-channel of HSV image as:
+A_hsv(:, :, 3) = histeq(A_hsv(:, :, 3));
+
+Now convert back the equalized HSV image to get histogram equalized RGB image as:
+A_histeq = hsv2rgb(A_hsv);
+
+Now display original and equalized RGB images side by side as:
+figure, subplot(1, 2, 1), imshow(A), title('Original RGB image');
+subplot(1, 2, 2), imshow(A_histeq), title('Equalized RGB image');
