@@ -1,0 +1,17 @@
+***** Image De-noising *****
+
+In this lecture, we will compare the effect of Gaussian filter vs. Average filter vs. Median filter for Salt & Pepper noise reduction. Let us start with reading an input image as:
+A = imread('filename.extension');
+
+Generate Gaussian and Average filter for filtering image as:
+h_gaussian = fspecial('gaussian');
+h_average = fspecial('average');
+
+Filter the input image using Gaussian and Average filter as:
+B_gaussian = imfilter(A, h_gaussian);
+B_average = imfilter(A, h_average);
+
+Filter the input image using Median filter as:
+B_median = medfilt2(A);
+
+Display original and filtered images side-by-side for comparing the result of image de-noising. As visible from the displayed images, Median filtering performs best for de-noising images contaminated with Salt & Pepper noise.

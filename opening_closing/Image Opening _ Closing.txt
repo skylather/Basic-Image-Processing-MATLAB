@@ -1,0 +1,23 @@
+***** Morphological image operations - Opening and Closing *****
+
+In last lecture, we learnt about image erosion and dilation. In this lecture, we will learn about how to perform image opening and closing in MATLAB. 
+
+As you may recall from our first lecture in this chapter, 
+1. Image opening => image erosion followed by dilation
+2. Image closing => image dilation followed by erosion
+
+Let us begin with reading an input image as:
+A = imread('filename.extension');
+If the read image is not single channel, convert it to single channel image.
+
+Now let us initialize structuring element for our use, which you may recall from out last lecture MATLAB has a function by the name 'strel()' which generates structuring element of various predefined shapes and sizes. This can be implemented as:
+se = strel('disk', 15); 
+This generates disk type structuring element with 15 pixels as diameter.
+
+For image opening, MATLAB has a function by the name 'imopen()' which can be used as:
+B_open = imopen(A, se);
+
+Similarly for image closing:
+B_close = imclose(A, se);
+
+Now display the original and processed images side-by-side for comparison.

@@ -1,0 +1,12 @@
+***** Adding noise to images - imnoise() *****
+
+This lecture describes how to add various types of noise to your image. Noise addition can be useful for simulating and measuring the performance and effectiveness of your noise reduction algorithm. Let us being by reading an input image:
+A = imread('filename.extension');
+
+MATLAB has a function called 'imnoise()' which supports addition of different types of noise such as Gaussian noise, Poisson noise, Speckle noise, Salt & pepper noise, etc. Let us contaminate the read input image with noise as:
+
+B_gaussian = imnoise(A, 'gaussian');
+B_speckle = imnoise(A, 'speckle');
+B_saltpepper = imnoise(A, 'salt & pepper');
+
+Display the images side-by-side to see the original image along with images contaminated with various types of noise.

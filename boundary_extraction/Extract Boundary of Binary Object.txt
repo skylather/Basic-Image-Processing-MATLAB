@@ -1,0 +1,20 @@
+***** Morphological image operations - Extract binary object boundary *****
+
+In this lecture, we will learn how to extract boundary of binary object using morphological image operations. Boundary of a binary object in an image can be extracted by subtracting the eroded image from the original image.
+
+Let us begin by reading an input image as:
+A = imread('filename.extension');
+The read image need to binary and single channel image.
+
+Generate a disk shaped structuring element using MATLAB function as:
+se = strel('disk', 5);
+
+Now perform image erosion using MATLAB's function 'imerode()' to generate eroded image as:
+B_eroded = imerode(A, se);
+
+In order to get the boundary of binary object, subtract the eroded image from the original image:
+B_boundary = A - B_eroded;
+
+Now the generated image will have the boundary of the binary object highlighted.
+
+The above task can be similarly performed by using image dilation. First think about it yourself. MATLAB code for it has been provided with this lecture.

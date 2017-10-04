@@ -1,0 +1,23 @@
+***** Project: Count the number of faces in an image *****
+
+The aim of this project will be to count the number of faces in a given image. This project aims to use the face detector functionality provided with MATLAB.
+
+Let us begin by reading an input image:
+A = imread('filename.extension');
+
+Now we will initialize a cascade face detector object using the following code:
+faceDetector = vision.CascadeObjectDetector();
+
+We will perform face detection to get bounding boxes of individual faces as:
+bbox = step(faceDetector, A);
+
+Finally we would like to display each face's bounding box superimposed on the original image which can be implemented as:
+B = insertObjectAnnotation(A, 'rectangle', bbox, 'Face');
+figure, imshow(B), title('Detected face');
+
+And now we print the number of detected faces to the MATLAB console window using:
+str = num2str(size(bbox, 1));
+str = strcat('Number of detected faces = ', str);
+disp(str);
+
+Number of detected faces in the image is displayed in MATLAB console.

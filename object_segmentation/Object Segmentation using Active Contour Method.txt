@@ -1,0 +1,17 @@
+***** Performing active contour based image segmentation - activecontour() *****
+
+Let us being by reading an input image as:
+A = imread('filename.extension');
+
+We require the read image to be single channel image, therefore:
+A = rgb2gray(A);
+
+In order to perform active contour segmentation, we need to initialize the contour for evolution. Therefore we initialize contour using a mask as:
+mask = zeros(size(A));
+mask(10:end-10,10:end-10) = 1;
+
+Now for active contour segmentation, MATLAB has a function by the name 'activecontout()' which take input arguments in the order - input image, initial contour (mask) and number of iterations for evolution:
+bw = activecontour(A, mask, 300);
+It results in an binary image where the segmented objects are shown as blobs.
+
+Display the images side-by-side to visualize the result of active contour segmentation.

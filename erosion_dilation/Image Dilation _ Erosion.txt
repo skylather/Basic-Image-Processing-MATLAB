@@ -1,0 +1,17 @@
+***** Morphological image operations - Erosion & Dilation *****
+
+In this lecture, we will learn to perform two morphological image operations which are erosion and dilation. Let us being with reading an input image as:
+A = imread('filename.extension');
+The read image needs to be single-channel image.
+
+We will need a structuring element for performing these operations. MATLAB has a function 'strel()' for generating structuring element as:
+se = strel('disk', 15); 
+This generates disk type structuring element with 15 pixels as diameter.
+
+For erosion, MATLAB has a function by the name 'imerode()' which can be used as:
+B_eroded = imerode(A, se);
+
+Similarly for dilation, MATLAB has a function by the name 'imdilate()' which can be used as:
+B_dilated = imdilate(A, se);
+
+Display original, eroded and dilated images side-by-side to observe the effect.
