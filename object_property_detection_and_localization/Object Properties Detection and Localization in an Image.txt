@@ -1,0 +1,36 @@
+***** Detecting and localizing a red ball in an image *****
+
+This code can be easily modified to detect any color and any shape of an object as per your requirements. Feel free to do so.
+
+Let us begin by reading an input image as:
+A = imread('filename.extension');
+
+We need to subtract the red component from the grayscale image in order to extract the red objects present in the image as:
+B_diff = imsubtract(A(:,:,1), rgb2gray(A));
+The first channel of input image has the red pixel components i.e., A(:, :, 1);
+
+Now we perform median filtering to reduce image noise followed by thresholding to convert the image into binary as:
+B_diff = medfilt2(B_diff, [3 3]);
+B_diff = im2bw(B_diff, 0.18);
+
+Still there is some image noise as a result of which objects smaller than the size of ball still appear as part of ball, therefore rejecting them by using morphological image opening as:
+B_diff = bwareaopen(B_diff, 300);
+
+We now label the detected objects in the binary image using the labelling function provided with MATLAB toolbox as:
+bw = bwlabel(B_diff, 8);
+
+Till now we have got our objects, now we need to compute their geometrical properties (centroid) and localize them using bounding box. MATLAB has a function by the name 'regionprops()' which can extract a large number of parameters of binary objects as:
+stats = regionprops(bw, 'BoundingBox', 'Centroid');
+
+Finally we will display the objects with their bounding boxes and centroids overlaid the original image using the following steps:
+figure, imshow(A), title('Original image with red balls coordinates'); 
+hold on
+for object = 1:length(stats)
+    bb = stats(object).BoundingBox;
+    bc = stats(object).Centroid;
+    rectangle('Position',bb,'EdgeColor','r','LineWidth',2)
+    plot(bc(1),bc(2), '-m+')
+    a = text(bc(1)+15,bc(2), strcat('X: ', num2str(round(bc(1))), '    Y: ', num2str(round(bc(2)))));
+    set(a, 'FontName', 'Arial', 'FontWeight', 'bold', 'FontSize', 12, 'Color', 'yellow');
+end
+hold off
